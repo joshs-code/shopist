@@ -18,7 +18,7 @@ test.describe('E2E test flows', () => {
 
     const pdp = new ProductDetailsPage(page);
     await pdp.addToCart();
-    await pdp.clickCart();
+    await pdp.gotoCart();
 
     const cp = new CartPage(page);
     await cp.clickCheckout();

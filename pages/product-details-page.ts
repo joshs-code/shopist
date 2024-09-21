@@ -10,14 +10,13 @@ export default class ProductDetailsPage {
     constructor(page: Page) {
         this.actions = new CommonActions(page);
         this.addtocartBtn = '.purchase-button';
-        this.cartLink = '//a[@href="/cart"][1]'
     }
 
     async addToCart() {
         await this.actions.click(this.addtocartBtn);
     }
 
-    async clickCart() {
-        await this.actions.click(this.cartLink);
+    async gotoCart() {
+        await this.actions.navigate('https://shopist.io/cart');
     }
 }

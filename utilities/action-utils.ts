@@ -15,7 +15,6 @@ export default class CommonActions {
     }
 
     async click(selector: string) {
-        await this.page.waitForSelector(selector); 
         await this.page.click(selector);
     }
 
