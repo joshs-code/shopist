@@ -10,7 +10,7 @@ export default class ProductDetailsPage {
     constructor(page: Page) {
         this.actions = new CommonActions(page);
         this.addtocartBtn = '.purchase-button';
-        this.cartLink = '//a[@href="/cart"][1]'
+        this.cartLink = '//a[@class="cart"]//div[contains(text(), "Cart")]'
     }
 
     async addToCart() {
