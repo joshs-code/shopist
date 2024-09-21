@@ -25,4 +25,12 @@ export default class CommonActions {
     async enterText(selector: string, text: string) {
         await this.page.locator(selector).fill(text);
     }
+
+    async keypress(key: string) {
+        await this.page.keyboard.press(key);
+    }
+
+    async upload(selector:string, imgPath: string) {
+        await this.page.locator(selector).setInputFiles(imgPath);
+    }
 }
