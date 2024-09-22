@@ -1,32 +1,26 @@
 import { test, expect } from '@playwright/test';
-import HomePage from '../pages/homepage-page';
-import ProductShopPage from '../pages/product-shop-page';
-import ProductDetailsPage from '../pages/product-details-page';
-import CartPage from '../pages/cart-page';
-import CheckoutPage from '../pages/checkout-page';
+import PageManager from '../pages/page-manager';
 
 test.describe('E2E test flows', () => {
   
   test("Product Checkout", async ({page}) => {
-    const hp = new HomePage(page);
+    
+    const pm = new PageManager(page);
 
-    await hp.go();
-    await hp.clickProductCategory();
+    await pm.hp.go();
+    await pm.hp.clickProductCategory();
 
-    const psp = new ProductShopPage(page);
-    await psp.clickProduct();
+    await pm.psp.clickProduct();
 
-    const pdp = new ProductDetailsPage(page);
-    await pdp.addToCart();
-    await pdp.gotoCart();
+    await pm.pdp.addToCart();
+    await pm.pdp.gotoCart();
 
-    const cp = new CartPage(page);
-    await cp.clickCheckout();
+    await pm.cp.clickCheckout();
 
-    const cop = new CheckoutPage(page);
-    const msg = await cop.getMsg();
+    const msg = await pm.cop.getMsg();
+    expect(msg).toEqual("Thank you!");
+    await pm.cop.snap();
 
-    expect(msg).toEqual("Thank you!")
   });
 
 })

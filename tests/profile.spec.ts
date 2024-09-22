@@ -18,6 +18,7 @@ test.describe("Positive Testing On Profile Edit Page", () => {
 
         const success = await pp.successMsg();
         expect(success).toMatch(/\s*Profile successfully saved\.\s*View updated profile\s*/);
+        await pp.snap();
     });
 
 })
@@ -38,5 +39,7 @@ test.describe("Negative Testing On Profile Edit Page", () => {
 
         const errorMsg = await pp.errorMsg();
         expect(errorMsg).toMatch(/^\s*Please enter a firstname\s*$/);
+        await pp.snap();
+
     });
 })

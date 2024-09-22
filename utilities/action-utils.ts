@@ -23,6 +23,7 @@ export default class CommonActions {
     }
 
     async enterText(selector: string, text: string) {
+        await this.page.waitForSelector(selector, { state: "visible", timeout: 20000});
         await this.page.locator(selector).fill(text);
     }
 
@@ -32,5 +33,9 @@ export default class CommonActions {
 
     async upload(selector:string, imgPath: string) {
         await this.page.locator(selector).setInputFiles(imgPath);
+    }
+
+    async snapshot(imgPath: string) {
+        await this.page.screenshot({path: imgPath})
     }
 }

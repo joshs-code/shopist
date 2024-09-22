@@ -1,4 +1,4 @@
-import { type Page } from '@playwright/test';
+import { Page } from '@playwright/test';
 import CommonActions from '../utilities/action-utils';
 
 
@@ -12,7 +12,6 @@ export default class ProfilePage {
     private addressPath: string;
     private cityPath: string;
     private statePath: string;
-    private stateChoice: string;
     private zipCodePath: string;
     private phoneNumberPath: string;
     private submitBtnPath: string;
@@ -102,5 +101,9 @@ export default class ProfilePage {
         await this.zipEdit(zip);
         await this.phoneEdit(phone);
         await this.clickSubmit();
+    }
+
+    async snap() {
+        await this.actions.snapshot("screenshots/profileedit.png")
     }
 }

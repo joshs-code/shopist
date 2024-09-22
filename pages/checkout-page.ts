@@ -12,6 +12,10 @@ export default class CheckoutPage {
         this.thankyouMsg = '//div[@class="checkout-title"]';
     }
 
+    async snap() {
+        await this.actions.snapshot("screenshots/checkout-order-completed.png");
+    }
+
     async getMsg() {
         return await this.actions.getText(this.thankyouMsg);
     }
